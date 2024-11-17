@@ -7,21 +7,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-route/1.8.3/angular-route.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="tailwind.config.js"></script>
-    <script>
-        var app = angular.module('musicPlayerApp', ['ngRoute'])
-        app.config(['$routeProvider', '$locationProvider', function ($routeProvider, $locationProvider) {
-            $routeProvider.when('/', {
-                templateUrl: 'templates/home.html',
-                controller: 'HomeController'
-            })
-            .otherwise({
-                redirectTo: '/'
-            });
-        }]);
-    </script>
+    <script src="./app.js"></script>
+
 </head>
 
-<body class="bg-black">
+<body class="bg-coolBlack">
     <div ng-view></div>
 </body>
 
