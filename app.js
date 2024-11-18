@@ -8,6 +8,9 @@ var app = angular.module('musicPlayerApp', ['ngRoute'])
                 .when('/currentSong', {
                     templateUrl: 'templates/currentSong.html',
                 })
+                .when('/register', {
+                    templateUrl: 'templates/register.html',
+                })
                 .otherwise({
                 redirectTo: '/'
                 });
