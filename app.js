@@ -8,6 +8,12 @@ var app = angular.module('musicPlayerApp', ['ngRoute'])
                 .when('/currentSong', {
                     templateUrl: 'templates/currentSong.html',
                 })
+                .when('/artist', {
+                    templateUrl: 'templates/artist.html',
+                })
+                .when('/playlist', {
+                    templateUrl: 'templates/playlist.html',
+                })
                 .when('/login', {
                     templateUrl: 'templates/login.html',
                 })

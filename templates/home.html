@@ -14,8 +14,8 @@
     <div class="mt-8">
         <h2 class="text-fuschia uppercase text-sm font-bold mb-4">Playlists</h2>
         <ul class="space-y-2">
-            <li ng-repeat="playlist in playlists">
-                <a href="#" class="text-gray-300 hover:text-white">{{playlist.name}}</a>
+            <li>
+                <a href="/frontend-finals/templates/playlist.html" class="block text-fuschia hover:text-white">Love Live</a>
             </li>
         </ul>
     </div>
@@ -72,10 +72,14 @@
     <div class="flex items-center justify-between px-4 py-3">
 
         <div class="flex items-center space-x-4">
-            <img alt="Current Album Art" class="w-14 h-14 rounded">
+            <img src="/frontend-finals/public/img/currentSong.jpg" alt="A song for You! You? You!!" class="w-14 h-14 rounded">
             <div>
-                <h4 class="font-semibold">{{currentSong.title}}</h4>
-                <p class="text-gray-400">{{currentSong.artist}}</p>
+                <h4 class="text-white font-semibold hover:text-gray-300 transition duration-200">
+                    <a href="templates/currentSong.html">A song for You! You? You!!</a>
+                </h4>
+                <h4 class="text-white hover:text-gray-300 transition duration-200">
+                    <a href="templates/artist.html">µ's</a>
+                </h4>
             </div>
         </div>
 
