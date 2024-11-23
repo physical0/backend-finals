@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> Settings | Music Player </title>
+    <link href = "https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel = "stylesheet">
+</head>
+<body class = "bg-coolBlack text-white flex items-center justify-center min-h-screen">
+    <div class = "bg-gray-800 p-8 rounded-lg shadow-md max-w-md w-full">
+        <h1 class = "text-fuschia text-3xl font-bold mb-6 text-center"> Settings </h1>
+        <hr class="border-fuschia border-t-2 mb-6">
+            
+        <div class="flex flex-col items-center space-y-4">
+            <img src = "../public/img/profilePicture.png" alt = "Profile Photo" class = "w-32 h-32 rounded-full object-cover border-4 border-pink-700">
+            <div class = "text-center">
+                <h2 class = "text-xl font-semibold text-fuschia"> User123 </h2>
+                <p class = "text-gray-400"> user123@anything.com </p>
+            </div>
+        </div>
+
+        <form class="space-y-4 mt-6">
+            <div>
+                <label class = "block text-fuschia font-semibold mb-2"> Nama </label>
+                <input type = "text" value = "User123" class = "w-full bg-gray-700 rounded-md px-4 py-2 text-white focus:outline-none focus:ring-2 focus:ring-fuschia">
+            </div>
+
+            <div>
+                <label class = "block text-fuschia font-semibold mb-2"> Email </label>
+                <input type = "email" value = "user123@anything.com" class = "w-full bg-gray-700 rounded-md px-4 py-2 text-gray-400 focus:outline-none" disabled>
+            </div>
+
+            <div class = "text-center mt-8">
+                <button class = "w-full py-2 rounded-md bg-pink-700 text-white font-semibold hover:bg-lavender hover:text-coolBlack transition duration-200"> Logout </button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
