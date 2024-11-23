@@ -16,22 +16,8 @@ var app = angular.module('musicPlayerApp', ['ngRoute'])
                 })
                 .when('/settings', {
                     templateUrl: 'templates/settings.html',
-                    controller: 'SettingsController'
                 })
                 .otherwise({
                 redirectTo: '/'
                 });
-        }]);
-
-        app.controller('SettingsController', ['$scope', function ($scope) {
-            // Placeholder user data
-            $scope.userName = "John Doe";
-            $scope.userEmail = "johndoe@example.com";
-        
-            // Logout function
-            $scope.logout = function () {
-                alert("You have successfully logged out!");
-                // Tambahkan logika logout sesuai kebutuhan, misalnya navigasi ke halaman login
-                window.location.href = "#/login";
-            };
         }]);
