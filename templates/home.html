@@ -1,32 +1,9 @@
-<!------------- Sidebar ------------->
-<div class="fixed w-64 h-full bg-pink-700 p-6 sidebar-custom">
-    <div class="bg-white grid place-items-center h-10 mb-4 rounded-md">
-        <h1 class="text-2xl text-fuschia font-bold mb-8 mt-1 object-center">Music Player</h1>
-    </div>
-    <!------------- Navigation ------------->
-    <nav class="space-y-4">
-        <a href="#" class="block text-fuschia hover:text-white">Home</a>
-        <a href="#" class="block text-fuschia hover:text-white">Search</a>
-        <a href="#" class="block text-fuschia hover:text-white">Your Library</a>
-    </nav>
-
-    <!------------- Playlists ------------->
-    <div class="mt-8">
-        <h2 class="text-fuschia uppercase text-sm font-bold mb-4">Playlists</h2>
-        <ul class="space-y-2">
-            <li ng-repeat="playlist in playlists">
-                <a href="#" class="text-gray-300 hover:text-white">{{playlist.name}}</a>
-            </li>
-        </ul>
-    </div>
-</div>
-
 <!------------- Main Content ------------->
 <div class="ml-64 p-8">
 
     <!------------- Search Bar ------------->
-    <div class="mb-8">
-        <input type="text" ng-model="searchQuery" placeholder="Search for songs..."
+    <div class="mb-8 mt-16">
+        <input type="text" ng-model="searchQuery" ng-click="goToSearch()" placeholder="Search for songs..."
             class="w-full bg-pink-700 rounded-full px-6 py-3 text-white">
     </div>
 
@@ -46,43 +23,3 @@
     </div>
 </div>
 
-<!------------- Player Controls ------------->
-<div class="fixed bottom-0 left-0 right-0 bg-gray-800 border-t border-gray-700">
-    <div class="flex items-center justify-between px-4 py-3">
-
-        <div class="flex items-center space-x-4">
-            <img alt="Current Album Art" class="w-14 h-14 rounded">
-            <div>
-                <h4 class="font-semibold">{{currentSong.title}}</h4>
-                <p class="text-gray-400">{{currentSong.artist}}</p>
-            </div>
-        </div>
-
-        <!------------- Playback ------------->
-
-        <div class="flex items-center space-x-6">
-            <button ng-click="previousSong()" class="text-gray-400 hover:text-white">
-                ⏮
-            </button>
-            <button ng-click="togglePlay()"
-                class="w-10 h-10 rounded-full bg-white text-black flex items-center justify-center">
-                {{isPlaying ? '⏸' : '▶'}}
-            </button>
-            <button ng-click="nextSong()" class="text-gray-400 hover:text-white">
-                ⏭
-            </button>
-        </div>
-
-        <!------------- Volume Controls ------------->
-        <div class="flex items-center space-x-2">
-            <span class="text-gray-400">🔊</span>
-            <input type="range" ng-model="volume" min="0" max="100" class="w-32">
-        </div>
-    </div>
-
-    <!------------- Progress Bar ------------->
-    <div class="h-1 bg-gray-700">
-        <div class="h-full bg-green-500">
-        </div>
-    </div>
-</div>
