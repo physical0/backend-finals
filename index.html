@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html ng-app="musicPlayerApp">
+<html ng-app="musicLibraryApp">
 
 <head>
     <title>Music Player</title>
@@ -7,12 +7,46 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-route/1.8.3/angular-route.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="tailwind.config.js"></script>
-    <script src="./app.js"></script>
+    <script src="./app.module.js"></script>
 
 </head>
 
 <body class="bg-coolBlack">
-    <div ng-view></div>
+    <nav
+        class="fixed top-0 left-0 right-0 z-50 gray-900 border-b border-white-700 flex items-center justify-between px-4 py-3 ring ring-white">
+        <div class="flex items-center space-x-4">
+            <!-- Profile Avatar Placeholder -->
+            <div class="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold">
+            </div>
+            <h1 class="text-xl font-bold text-fuschia"></h1>
+        </div>
+    </nav>
+
+
+    <!------------- Sidebar ------------->
+    <div class="fixed w-64 h-full bg-pink-700 p-6 sidebar-custom mt-16">
+        <div class="bg-darkMagenta grid place-items-center h-10 mb-4 rounded-md">
+            <h1 class="text-2xl text-fuschia font-bold mb-8 mt-1 object-center">Music Library</h1>
+        </div>
+        <!------------- Navigation ------------->
+        <nav class="space-y-4">
+            <a href="#" class="block text-fuschia hover:text-white">Home</a>
+            <a href="#" class="block text-fuschia hover:text-white">Search</a>
+            <a href="#" class="block text-fuschia hover:text-white">Your Library</a>
+        </nav>
+
+        <!------------- Playlists ------------->
+        <div class="mt-8">
+            <h2 class="text-fuschia uppercase text-sm font-bold mb-4">Playlists</h2>
+            <ul class="space-y-2">
+                <li ng-repeat="playlist in playlists">
+                    <a href="#" class="text-gray-300 hover:text-white">{{playlist.name}}</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+    <div ng-view>
+    </div>
 </body>
 
 </html>
