@@ -22,28 +22,17 @@
         </div>
     </nav>
 
-
     <!------------- Sidebar ------------->
     <div class="fixed w-64 h-full bg-pink-700 p-6 sidebar-custom mt-16">
         <div class="bg-darkMagenta grid place-items-center h-10 mb-4 rounded-md">
-            <h1 class="text-2xl text-fuschia font-bold mb-8 mt-1 object-center">Music Library</h1>
+            <h1 class="text-2xl text-white font-bold mb-8 mt-1 object-center">Musica</h1>
         </div>
         <!------------- Navigation ------------->
-        <nav class="space-y-4">
-            <a href="#" class="block text-fuschia hover:text-white">Home</a>
-            <a href="#" class="block text-fuschia hover:text-white">Search</a>
-            <a href="#" class="block text-fuschia hover:text-white">Your Library</a>
+        <nav class>
+            <a href="#" class="block text-gray-300 hover:text-white ml-3">Home</a>
+            <a href="#" class="block text-gray-300 hover:text-white ml-3 mt-4">Search</a>
+            <a href="#" class="block text-gray-300 hover:text-white ml-3 mt-4">Your Library</a>
         </nav>
-
-        <!------------- Playlists ------------->
-        <div class="mt-8">
-            <h2 class="text-fuschia uppercase text-sm font-bold mb-4">Playlists</h2>
-            <ul class="space-y-2">
-                <li ng-repeat="playlist in playlists">
-                    <a href="#" class="text-gray-300 hover:text-white">{{playlist.name}}</a>
-                </li>
-            </ul>
-        </div>
     </div>
     <div ng-view>
     </div>
