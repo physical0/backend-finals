@@ -42,8 +42,8 @@ app.controller('SearchController', ['$scope', '$http', function($scope, $http) {
     $scope.showModal = false;
     $scope.loadingDetails = false;
     
-    const DISCOGS_API_KEY = 'ORTtjiltQITILFvcgxlj';
-    const DISCOGS_API_SECRET = 'rhiCeRwiKtclkHWCDCcopwLNKosaUIhg';
+    const DISCOGS_API_KEY = 'btRisFfTfjEfmJVdBeIx';
+    const DISCOGS_API_SECRET = 'xmBiFGMXZWbPFwPuGAoAhgjrjzdxusQn';
     
     $scope.searchMusic = function() {
       if (!$scope.searchQuery) return;
