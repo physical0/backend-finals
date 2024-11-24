@@ -1,10 +1,5 @@
 var app = angular.module('musicLibraryApp', ['ngRoute'])
 
-app.constant('CONFIG', {
-    DISCOGS_API_KEY: 'ORTtjiltQITILFvcgxlj',
-    DISCOGS_API_SECRET: 'rhiCeRwiKtclkHWCDCcopwLNKosaUIhg',
-})
-
 app.config(['$routeProvider', '$locationProvider', function ($routeProvider) {
     $routeProvider
         .when('/', {
