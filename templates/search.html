@@ -1,7 +1,7 @@
 <div class="ml-64 p-8">
     <div class="mb-8 mt-16">
-        <input type="text" ng-model="searchQuery" ng-change="search()" placeholder="Search for songs... "
-            class="w-full bg-pink-700 rounded-full ring ring-white px-6 py-3 text-white"
+        <input type="text" ng-model="searchQuery" ng-change="search()" placeholder="Search for music albums... "
+            class="w-full bg-pink-700 rounded-full ring ring-white px-6 py-3 text-white placeholder-white"
             ng-keyup="$event.keyCode === 13 && searchMusic()">
     </div>
 
@@ -15,7 +15,7 @@
 
     <!------------- Search Results ------------->
     <div class="space-y-4" ng-if="results.length > 0">
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             <div ng-repeat="album in results"
                 class="bg-coolBlack rounded-lg shadow-md overflow-hidden border-pink-700 border-8 aspect-w-1 aspect-h-1 flex flex-col">
                 <div class="flex flex-col justify-between h-full">
