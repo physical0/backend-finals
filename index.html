@@ -11,12 +11,13 @@
 
 </head>
 
-<body class="bg-coolBlack">
+<body class="bg-coolBlack" ng-controller="NavigationController">
+    <div>
     <nav
         class="fixed top-0 left-0 right-0 z-50 gray-900 border-b border-white-700 flex items-center justify-between px-4 py-3 ring ring-white">
         <div class="flex items-center space-x-4">
-            <!-- Profile Avatar Placeholder -->
-            <div class="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold">
+    <!------------- Profile Avatar ------------->
+    <div class="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold">
             </div>
             <h1 class="text-xl font-bold text-fuschia"></h1>
         </div>
@@ -29,11 +30,12 @@
         </div>
         <!------------- Navigation ------------->
         <nav class>
-            <a href="#" class="block text-gray-300 hover:text-white ml-3">Home</a>
-            <a href="#" class="block text-gray-300 hover:text-white ml-3 mt-4">Search</a>
-            <a href="#" class="block text-gray-300 hover:text-white ml-3 mt-4">Your Library</a>
+            <a ng-click="navigateTo('/')" class="block text-gray-300 hover:text-white ml-3">Home</a>
+            <a ng-click="navigateTo('/searchSong')" class="block text-gray-300 hover:text-white ml-3 mt-4" >Search</a>
+            <a ng-click="navigateTo('/')" class="block text-gray-300 hover:text-white ml-3 mt-4">Your Library</a>
         </nav>
     </div>
+    
     <div ng-view>
     </div>
 </body>
