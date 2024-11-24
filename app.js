@@ -1,10 +1,5 @@
 var app = angular.module('musicLibraryApp', ['ngRoute'])
 
-app.constant('CONFIG', {
-    DISCOGS_API_KEY: 'ORTtjiltQITILFvcgxlj',
-    DISCOGS_API_SECRET: 'rhiCeRwiKtclkHWCDCcopwLNKosaUIhg',
-})
-
 app.config(['$routeProvider', '$locationProvider', function ($routeProvider) {
     $routeProvider
         .when('/', {
@@ -42,8 +37,8 @@ app.controller('SearchController', ['$scope', '$http', function($scope, $http) {
     $scope.showModal = false;
     $scope.loadingDetails = false;
     
-    const DISCOGS_API_KEY = 'ORTtjiltQITILFvcgxlj';
-    const DISCOGS_API_SECRET = 'rhiCeRwiKtclkHWCDCcopwLNKosaUIhg';
+    const DISCOGS_API_KEY = 'btRisFfTfjEfmJVdBeIx';
+    const DISCOGS_API_SECRET = 'xmBiFGMXZWbPFwPuGAoAhgjrjzdxusQn';
     
     $scope.searchMusic = function() {
       if (!$scope.searchQuery) return;
