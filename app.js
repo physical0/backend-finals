@@ -63,6 +63,7 @@ app.controller('SearchController', ['$scope', '$http', function ($scope, $http) 
     });
   };
 
+
   $scope.viewAlbumDetails = function (album) {
     $scope.loadingDetails = true;
     $scope.showModal = true;
@@ -94,18 +95,34 @@ app.controller('SearchController', ['$scope', '$http', function ($scope, $http) 
     $scope.selectedAlbum = null;
   };
 
+  const port = 3000;
+
   $scope.addToLibrary = function (album) {
     if (!$scope.library.find(item => item.id === album.id)) {
-      const albumToAdd = $scope.selectedAlbum || album;
+      const albumToAdd = {
+        ...($scope.selectedAlbum || album),
+        dateAdded: new Date(),
+        inLibrary: true
+      };
       $scope.library.push({
-        ...albumToAdd,
-        dateAdded: new Date()
+        ...albumToAdd
       });
-      if ($scope.selectedAlbum) {
-        $scope.selectedAlbum.inLibrary = true;
-      }
+
+      $http.post(`http://localhost:${port}/api/upload/library`, albumToAdd, {
+        headers: {
+          'Content-Type':  'application/json' // Let the browser set the content type
+        }
+      })
+      .then(function(response) {
+        console.log('Upload successful:', response.data);
+      })
+      .catch(function(error) {
+        console.error('Upload failed:', error);
+      });
     }
   };
+
+  
 
   $scope.removeFromLibrary = function (albumId) {
     $scope.library = $scope.library.filter(item => item.id !== albumId);

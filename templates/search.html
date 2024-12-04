@@ -44,6 +44,32 @@
         </div>
     </div>
 
+<!-- test code -->
+    <div ng-if="library.length > 0">
+        <h2 class="text-2xl font-bold text-gray-900 mb-4">Your Library</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div ng-repeat="album in library" class="bg-white rounded-lg shadow-md overflow-hidden">
+                <img ng-src="{{album.thumb || 'placeholder.jpg'}}" alt="{{album.title}}"
+                    class="w-full h-48 object-cover">
+                <div class="p-4">
+                    <h3 class="font-bold text-lg mb-2">{{album.title}}</h3>
+                    <p class="text-gray-600 mb-2">{{album.year}}</p>
+                    <p class="text-gray-500 text-sm mb-4">Added: {{album.dateAdded | date:'medium'}}</p>
+                    <div class="flex gap-2">
+                        <button ng-click="viewAlbumDetails(album)"
+                            class="flex-1 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600">
+                            View Details
+                        </button>
+                        <button ng-click="removeFromLibrary(album.id)"
+                            class="flex-1 px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600">
+                            Remove
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <!------------- Modal Pop Up ------------->
     <div ng-if="showModal"
         class="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50 modal-backdrop"
