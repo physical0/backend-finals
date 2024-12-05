@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title> Profile | Music Player </title>
+    <link href = "https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel = "stylesheet">
+</head>
+<body class = "bg-gray-700 text-white flex items-center justify-center min-h-screen">
+    <div class = "bg-gray-800 p-8 rounded-lg shadow-md max-w-2xl w-full">
+        <h1 class = "text-fuschia text-3xl font-bold mb-6 text-center"> My Profile </h1>
+        <hr class = "border-fuschia border-t-2 mb-6">
+
+        <div class = "flex items-center space-x-6 mb-8">
+            <img src = "../public/img/profilePicture.png" alt = "Profile Photo" 
+                class = "w-20 h-20 rounded-full object-cover border-4 border-pink-700">
+            <div>
+                <h2 class = "text-xl font-semibold text-fuschia"> User123 </h2>
+            </div>
+        </div>
+
+        <h2 class = "text-2xl font-bold text-fuschia mb-4"> My Playlists </h2>
+        
+        <div class = "bg-gray-700 rounded-lg p-4">
+            <p class = "text-gray-400"> You do not have any playlist yet! </p>
+        </div>
+
+        <div class = "mt-6 text-center">
+            <button class = "w-full py-2 rounded-md bg-pink-700 text-white font-semibold hover:bg-lavender hover:text-coolBlack transition duration-200"> New Playlist </button>
+        </div>
+    </div>
+</body>
+</html>
