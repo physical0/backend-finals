@@ -1,6 +1,8 @@
 <div class="ml-64 p-8">
-    <div ng-if="library.length > 0">
-        <h2 class="text-2xl font-bold text-gray-900 mb-4">Your Library</h2>
+
+    <h2 class="text-2xl font-bold text-white mb-[50px] mt-[10px]">Your Library</h2>
+
+    <div ng-if="library.length > 0" class="ml-[40px]">
         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             <div ng-repeat="album in library" class="bg-white rounded-lg shadow-md overflow-hidden flex flex-col">
                 <img ng-src="{{album.thumb || 'placeholder.jpg'}}" alt="{{album.title}}"
@@ -17,7 +19,7 @@
                             View Details
                         </button>
                         <button ng-click="removeFromLibrary(album.id)"
-                            class="flex-1 px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600">
+                            class="flex-1 px-4 py-2 bg-pink-700 text-white rounded-lg hover:bg-pink-800">
                             Remove
                         </button>
                     </div>
@@ -80,7 +82,7 @@
                             Add to Library
                         </button>
                         <button ng-if="selectedAlbum.inLibrary" ng-click="removeFromLibrary(selectedAlbum.id)"
-                            class="w-full px-4 py-2 bg-red-500 text-white rounded-lg hover:bg-red-600 mb-2">
+                            class="w-full px-4 py-2 bg-pink-700 text-white rounded-lg hover:bg-pink-80 mb-2">
                             Remove from Library
                         </button>
                     </div>

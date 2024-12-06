@@ -14,31 +14,64 @@
 
 <body class="bg-coolBlack" ng-controller="NavigationController">
     <div>
-    <nav
-        class="fixed top-0 left-0 right-0 z-50 gray-900 flex items-center justify-between px-4 py-3">
-        <div class="flex items-center space-x-4">
-    <!------------- Profile Avatar ------------->
-    <div class="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold">
+        <nav class="fixed top-0 left-0 right-0 z-50 gray-900 flex items-center justify-between px-4 py-3">
+            <div class="flex items-center space-x-4">
+                <!------------- Musica Avatar ------------->
+                <div class="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold">
+                    <img src="public/img/images.png" alt="Profile Avatar" class="w-full h-full object-cover rounded-md flex items-center justify-center ml-5 mt-5 ">
+                </div>
+                <h1 class="text-xl font-bold text-gray-300"></h1>
             </div>
-            <h1 class="text-xl font-bold text-fuschia"></h1>
-        </div>
-    </nav>
-
-    <!------------- Sidebar ------------->
-    <div class="fixed w-64 h-full bg-pink-700 p-6 sidebar-custom">
-        <div class="bg-darkMagenta grid place-items-center h-10 mb-4 rounded-md">
-            <h1 class="text-2xl text-white font-bold mb-8 mt-1 object-center">Musica</h1>
-        </div>
-        <!------------- Navigation ------------->
-        <nav class>
-            <a ng-click="navigateTo('/')" class="block text-gray-300 hover:text-white ml-3">Home</a>
-            <a ng-click="navigateTo('/searchSong')" class="block text-gray-300 hover:text-white ml-3 mt-4" >Search</a>
-            <a ng-click="navigateTo('/library')" class="block text-gray-300 hover:text-white ml-3 mt-4">Your Library</a>
         </nav>
-    </div>
-    
-    <div ng-view>
-    </div>
+
+        <!------------- Sidebar ------------->
+        <div class="fixed w-64 h-full bg-pink-700 p-6 sidebar-custom">
+            <div class="bg-darkMagenta grid place-items-center h-10 mb-4 rounded-md">
+                <h1 class="text-2xl text-white font-bold mb-8 mt-1 ml-5 object-center">Musica</h1>
+            </div>
+            <!------------- Navigation ------------->
+            <nav class>
+                <a ng-click="navigateTo('/')" class="block text-gray-300 hover:text-white ml-3">Home</a>
+                <a ng-click="navigateTo('/searchSong')"
+                    class="block text-gray-300 hover:text-white ml-3 mt-4">Search</a>
+                <a ng-click="navigateTo('/library')" class="block text-gray-300 hover:text-white ml-3 mt-4">Your
+                    Library</a>
+            </nav>
+
+            <!------------- Profile & Settings Button ------------->
+            <div class="mt-5">
+                <a href="templates/profile.html"
+                    class="flex items-center space-x-4 text-gray-300 hover:text-white py-2 px-4 rounded-md transition duration-200">
+                    <i class="fas fa-user"> </i>
+                    <span> Profile </span>
+                </a>
+
+                <a href="templates/settings.html"
+                    class="flex items-center space-x-4 text-gray-300 hover:text-white py-2 px-4 rounded-md transition duration-200">
+                    <i class="fas fa-cog"> </i>
+                    <span> Settings </span>
+                </a>
+            </div>
+
+            <!------------- Login & Register Button ------------->
+            <nav class="mt-64 text-center">
+                <h4 class="mb-4 text-gray-300 font-semibold text-lg"> Already Have an Account? </h4>
+                <div class="flex justify-center space-x-4">
+                    <a href="templates/login.html"
+                        class="block w-24 text-center py-2 rounded-md bg-white text-coolBlack font-semibold hover:bg-lavender hover:text-white transition duration-200">
+                        <i class="fas fa-sign-in-alt mr-2"> </i> Login
+                    </a>
+
+                    <a href="templates/register.html"
+                        class="block w-24 text-center py-2 rounded-md bg-white text-coolBlack font-semibold hover:bg-lavender hover:text-white transition duration-200">
+                        <i class="fas fa-user-plus mr-1"> </i> Register
+                    </a>
+                </div>
+            </nav>
+        </div>
+
+        <div ng-view>
+        </div>
 </body>
 
 </html>
