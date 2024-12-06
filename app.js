@@ -14,19 +14,20 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider) {
       templateUrl: 'templates/currentSong.html',
     })
     .when('/artist', {
-        templateUrl: 'templates/artist.html',
+      templateUrl: 'templates/artist.html',
+      controller: 'ArtistController'
     })
     .when('/playlist', {
-        templateUrl: 'templates/playlist.html',
+      templateUrl: 'templates/playlist.html',
     })
     .when('/login', {
-        templateUrl: 'templates/login.html',
+      templateUrl: 'templates/login.html',
     })
     .when('/register', {
-        templateUrl: 'templates/register.html',
+      templateUrl: 'templates/register.html',
     })
     .when('/settings', {
-        templateUrl: 'templates/settings.html',
+      templateUrl: 'templates/settings.html',
     })
     .otherwise({
       redirectTo: '/'
@@ -37,6 +38,61 @@ app.controller('NavigationController', ['$scope', '$location', function ($scope,
   $scope.navigateTo = function (path) {
       $location.path(path); 
   };
+}]);
+
+app.controller('ArtistController', ['$scope', '$http', '$routeParams', function ($scope, $http, $routeParams) {
+  $scope.artist = null;
+  $scope.albums = [];
+  $scope.loading = false;
+  $scope.error = null;
+
+  const DISCOGS_API_KEY = 'btRisFfTfjEfmJVdBeIx';
+  const DISCOGS_API_SECRET = 'xmBiFGMXZWbPFwPuGAoAhgjrjzdxusQn';
+  
+  // Get the artist's ID from the route parameters
+  const artistId = $routeParams.artistId;
+
+  $scope.fetchArtistDetails = function () {
+    $scope.loading = true;
+    $scope.error = null;
+
+    // Fetch artist details using the Discogs API
+    $http({
+      method: 'GET',
+      url: `https://api.discogs.com/artists/${artistId}`,
+      params: {
+        key: DISCOGS_API_KEY,
+        secret: DISCOGS_API_SECRET
+      }
+    }).then(function (response) {
+      $scope.artist = response.data;
+      $scope.fetchArtistAlbums();
+    }).catch(function (error) {
+      $scope.error = 'Failed to fetch artist details. Please try again later.';
+      $scope.loading = false;
+    });
+  };
+
+  $scope.fetchArtistAlbums = function () {
+    // Fetch releases (albums, singles, etc.) linked to the artist
+    $http({
+      method: 'GET',
+      url: `https://api.discogs.com/artists/${artistId}/releases`,
+      params: {
+        key: DISCOGS_API_KEY,
+        secret: DISCOGS_API_SECRET
+      }
+    }).then(function (response) {
+      $scope.albums = response.data;
+      $scope.loading = false;
+    }).catch(function (error) {
+      $scope.error = 'Failed to fetch releases. Please try again later.';
+      $scope.loading = false;
+    });
+  };
+
+  // Fetch the artist details and releases when the controller is loaded
+  $scope.fetchArtistDetails();
 }]);
 
 app.controller('SearchController', ['$scope', '$http', function ($scope, $http) {
@@ -190,6 +246,7 @@ app.controller('HomeController', function($scope, $http, $location) {
               title: album.title,
               thumb: album.thumb,
               year: album.year,
+              artist: album.artist,
               style: album.style || []
           }));
           $scope.loading = false;
