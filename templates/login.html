@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title> Login | Music Player </title>
+    <title> Login | Musica </title>
     <link href = "https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel = "stylesheet">
 </head>
 <body class = "bg-gray-700 text-white flex items-center justify-center min-h-screen">
@@ -9,7 +9,7 @@
         <h1 class = "text-fuschia text-3xl font-bold mb-6 text-center"> Welcome </h1>
         <hr class = "border-fuschia border-t-2 mb-6">
 
-        <form ng-submit = "loginUser()" class = "space-y-4">
+        <form id = "loginForm" class = "space-y-4">
 
             <div>
                 <label for = "email" class = "block text-fuschia font-semibold mb-2"> Email </label>
@@ -29,5 +29,30 @@
             <a href = "register.html" class = "text-lavender hover:underline"> Register here. </a>
         </p>
     </div>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', async (e) => {
+          e.preventDefault();
+      
+          const user = {
+            email: document.getElementById('email').value,
+            password: document.getElementById('password').value,
+          };
+      
+          const response = await fetch('http://localhost:3000/api/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(user),
+          });
+      
+          const result = await response.json();
+          if (response.ok) {
+            alert(result.message);
+            window.location.href = '../index.html';
+          } else {
+            alert(result.message);
+          }
+        });
+      </script>
 </body>
 </html>

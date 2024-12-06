@@ -34,6 +34,30 @@
             <button type = "submit" class = "w-full py-2 rounded-md bg-pink-700 text-white font-semibold hover:bg-lavender hover:text-coolBlack transition duration-200"> Register </button>
         </form>
 
+        <script>
+            document.querySelector('form').addEventListener('submit', async (e) => {
+              e.preventDefault();
+          
+              const user = {
+                username: document.getElementById('username').value,
+                email: document.getElementById('email').value,
+                password: document.getElementById('password').value,
+                confirmPassword: document.getElementById('confirmPassword').value
+              };
+          
+              const response = await fetch('http://localhost:3000/api/register', {
+                method: 'POST',
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(user)
+              });
+          
+              const result = await response.json();
+              alert(result.message);
+
+              document.querySelector('form').reset();
+            });
+          </script>
+
         <p class = "text-center text-sm mt-4"> Already have an account? 
             <a href = "login.html" class = "text-lavender hover:underline"> Login here </a>.
         </p>
