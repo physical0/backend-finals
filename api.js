@@ -12,7 +12,7 @@ dotenv.config();
 const port = process.env.PORT || 3000;
 const app = express();
 
-mongoose.connect(`${process.env.MONGODB_URI}/${process.env.DB_NAME}`, { useNewUrlParser: true, useUnifiedTopology: true })
+mongoose.connect(`mongodb://127.0.0.1:27017/musica`, { useNewUrlParser: true, useUnifiedTopology: true })
   .then(() => console.log('MongoDB connected'))
   .catch(err => console.error('MongoDB connection error:', err));
 

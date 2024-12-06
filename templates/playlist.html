@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Music Player | Playlist</title>
+        <link rel="stylesheet" href="../styles/backgroundImage.css">
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script src="../tailwind.config.js"></script>
+        <style>
+            /* Make header sticky */
+            .sticky-header {
+                position: sticky;
+                top: 0;
+                z-index: 10;
+            }
+
+            /* Make control section sticky and smaller */
+            .sticky-control {
+                position: sticky;
+                bottom: 0;
+                width: 100%;
+                z-index: 5;
+            }
+        </style>
+    </head>
+    <body class="bg-coolBlack flex flex-col min-h-screen">
+        <!-- Header -->
+        <div class="bg-black text-lavender flex flex-row py-5 w-full sticky-header">
+            <div class="uppercase text-lg basis-1/4 pl-5">
+                <a href="../index.html">
+                    <span class="font-extrabold hover:text-white transition duration-200">Musica</span>
+                </a>
+            </div>
+            <div class="flex-auto flex justify-end items-center pr-5">
+                <span>Now playing</span>
+                <a href="">
+                    <span class="font-extrabold ml-2 hover:text-white transition duration-200">A song for You! You? You!!</span>
+                </a>
+            </div>
+        </div>
+
+        <!-- Main Section -->
+        <div class="text-white flex flex-col flex-grow items-center container mx-auto">
+            <!-- Background -->
+            <div class="main-background"></div>
+
+            <!-- Playlist Title -->
+            <div class="mt-10 w-3/4">
+                <h1 class="text-4xl font-extrabold">Love Live</h1>
+                <p class="text-gray-300 mt-2">My all time favorite Love Live song</p>
+            </div>
+
+            <!-- Songs List -->
+            <div class="mt-5 w-3/4">
+                <ul class="space-y-4">
+                    <li class="bg-gray-800 rounded-xl p-4 flex justify-between items-center hover:bg-gray-700 transition duration:200">
+                        <span class="text-lg">A song for You! You? You!!</span>
+                        <button class="bg-pink-400 text-white p-3 rounded-full hover:bg-lavender transition duration-200">
+                            <!-- Play Button -->
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 21 24" stroke="currentColor">
+                                <path stroke-width="2" d="M14.752 11.168l-6.704-3.736a1 1 0 00-1.496.868v7.472a1 1 0 001.496.868l6.704-3.736a1 1 0 000-1.736z" />
+                            </svg>
+                        </button>
+                    </li>
+                    <li class="bg-gray-800 rounded-xl p-4 flex justify-between items-center hover:bg-gray-700 transition duration:200">
+                        <span class="text-lg">Snow Halation</span>
+                        <button class="bg-pink-400 text-white p-3 rounded-full hover:bg-lavender transition duration-200">
+                            <!-- Play Button -->
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 21 24" stroke="currentColor">
+                                <path stroke-width="2" d="M14.752 11.168l-6.704-3.736a1 1 0 00-1.496.868v7.472a1 1 0 001.496.868l6.704-3.736a1 1 0 000-1.736z" />
+                            </svg>
+                        </button>
+                    </li>
+                    <li class="bg-gray-800 rounded-xl p-4 flex justify-between items-center hover:bg-gray-700 transition duration:200">
+                        <span class="text-lg">START:DASH!!</span>
+                        <button class="bg-pink-400 text-white p-3 rounded-full hover:bg-lavender transition duration-200">
+                            <!-- Play Button -->
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 21 24" stroke="currentColor">
+                                <path stroke-width="2" d="M14.752 11.168l-6.704-3.736a1 1 0 00-1.496.868v7.472a1 1 0 001.496.868l6.704-3.736a1 1 0 000-1.736z" />
+                            </svg>
+                        </button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Control Section -->
+        <div class="bg-black text-lavender flex items-center justify-between py-4 space-x-6 sticky-control">
+            <!-- Image on the Left -->
+            <div class="flex-none pl-5">
+                <img src="/frontend-finals/public/img/currentSong.jpg" alt="Album Art" class="rounded-xl w-16 h-16">
+            </div>
+
+            <!-- Song Name and Artist on the Right -->
+            <div class="flex flex-col justify-center ml-2 text-white">
+                <a href="/frontend-finals/templates/currentSong.html">
+                    <span class="text-white font-semibold hover:text-gray-300 transition duration-200">A song for You! You? You!!</span>
+                </a>
+                <a href="/frontend-finals/templates/artist.html">
+                    <span class="text-white hover:text-gray-300 transition duration-200">µ's</span>
+                </a>
+            </div>
+
+            <!-- Playback Controls in the Center -->
+            <div class="flex flex-col items-center flex-grow">
+                <!-- Playback Buttons -->
+                <div class="flex justify-center items-center space-x-6 mb-4">
+                    <button class="bg-pink-400 text-white p-3 rounded-full hover:bg-lavender transition duration-200">
+                        <!-- Backward Button -->
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                        </svg>
+                    </button>
+                    <button class="bg-lavender text-white p-5 rounded-full hover:bg-pink-400 transition duration-200">
+                        <!-- Play/Pause Button -->
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 21 24" stroke="currentColor">
+                            <path stroke-width="2" d="M14.752 11.168l-6.704-3.736a1 1 0 00-1.496.868v7.472a1 1 0 001.496.868l6.704-3.736a1 1 0 000-1.736z" />
+                        </svg>
+                    </button>
+                    <button class="bg-pink-400 text-white p-3 rounded-full hover:bg-lavender transition duration-200">
+                        <!-- Forward Button -->
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Progress Bar -->
+                <div class="w-4/6 bg-gray-300 h-1 rounded-full relative mb-4">
+                    <div class="bg-pink-600 h-1 rounded-full" style="width: 35%;"></div>
+                </div>
+                <div class="flex justify-between w-4/6 text-sm text-lavender font-semibold">
+                    <span>0:35</span>
+                    <span>3:45</span>
+                </div>
+            </div>
+
+            <!-- Volume Control on the Right -->
+            <div class="flex-none mr-5">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-lavender" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5L6 9H3v6h3l5 4V5z" />
+                </svg>
+                <input type="range" class="w-32 accent-pink-600" min="0" max="100" value="50">
+            </div>
+        </div>
+    </body>
+</html>

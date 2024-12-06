@@ -1,38 +1,89 @@
-<div class="bg-lavender text-pink-900 flex flex-row mx-auto py-5 w-screen">
-    <!-- Header -->
-    <div class="uppercase text-lg basis-1/4 pl-5">
-        <a href="">
-            <span class="font-extrabold hover:text-white">Musica</span>
-        </a>
-    </div>
-    <div class="flex-auto flex justify-end items-center pr-5">
-        <span>Now playing</span>
-        <a href="">
-            <span class="font-extrabold ml-2 hover:text-white">A song for You! You? You!!</span>
-        </a>
-    </div>
-</div>
-<div class="text-white mx-auto flex items-center">
-    <!-- Main -->
-    <div class="basis-1/2 m-5">
-        <img src="/frontend-finals/public/img/currentSong.jpg" alt="A song for You! You? You!!" class="rounded-3xl">
-    </div>
-    <div class="ml-3 w-screen">
-        <div>
-            <a href="">
-                <span class="text-5xl font-extrabold  hover:text-gray-300">A song for You! You? You!!</span>
-            </a>
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Music Player | Current Song</title>
+        <link rel="stylesheet" href="../styles/backgroundImage.css">
+        <script src="https://cdn.tailwindcss.com"></script>
+        <script src="../tailwind.config.js"></script>
+    </head>
+    <body class="bg-coolBlack h-screen flex flex-col">
+        <!-- Header -->
+        <div class="bg-black text-lavender flex flex-row py-5 w-full">
+            <div class="uppercase text-lg basis-1/4 pl-5">
+                <a href="../index.html">
+                    <span class="font-extrabold hover:text-white transition duration-200">Musica</span>
+                </a>
+            </div>
+            <div class="flex-auto flex justify-end items-center pr-5">
+                <span>Now playing</span>
+                <a href="">
+                    <span class="font-extrabold ml-2 hover:text-white transition duration-200">A song for You! You? You!!</span>
+                </a>
+            </div>
         </div>
-        <div class="mt-5">
-            <a href="">
-                <span class="text-2xl font-bold hover:text-gray-300">µ's</span>
-            </a>
+    
+        <!-- Main Section -->
+        <!-- Background -->
+        <div class="main-background"></div>
+
+        <div class="text-white flex flex-1 items-center container mx-auto">
+            <div class="basis-1/2 m-5">
+                <img src="/frontend-finals/public/img/currentSong.jpg" alt="A song for You! You? You!!" class="rounded-3xl w-full h-auto">
+            </div>
+            <div class="ml-3 w-full">
+                <div>
+                    <a href="">
+                        <span class="text-5xl font-extrabold hover:text-gray-300 transition duration-200">A song for You! You? You!!</span>
+                    </a>
+                </div>
+                <div class="mt-5">
+                    <a href="./artist.html">
+                        <span class="text-2xl font-bold hover:text-gray-300 transition duration-200">µ's</span>
+                    </a>
+                </div>
+            </div>
         </div>
-    </div>
-</div>
-<div class="bg-gray-800 text-white">
-    <!-- Control -->
-    <div>
-        <span>Control</span>
-    </div>
-</div>
+    
+        <!-- Control Section -->
+        <div class="bg-black text-lavender flex flex-col items-center py-4">
+            <!-- Playback Controls -->
+            <div class="flex justify-center items-center space-x-6 mb-4">
+                <button class="bg-pink-400 text-white p-3 rounded-full hover:bg-lavender transition duration-200">
+                    <!-- Backward Button -->
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+                    </svg>
+                </button>
+                <button class="bg-lavender text-white p-5 rounded-full hover:bg-pink-400 transition duration-200">
+                    <!-- Play/Pause Button -->
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 21 24" stroke="currentColor">
+                        <path stroke-width="2" d="M14.752 11.168l-6.704-3.736a1 1 0 00-1.496.868v7.472a1 1 0 001.496.868l6.704-3.736a1 1 0 000-1.736z" />
+                    </svg>
+                </button>
+                <button class="bg-pink-400 text-white p-3 rounded-full hover:bg-lavender transition duration-200">
+                    <!-- Forward Button -->
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                    </svg>
+                </button>
+            </div>
+    
+            <!-- Progress Bar -->
+            <div class="w-3/4 bg-gray-300 h-2 rounded-full relative mb-4">
+                <div class="bg-pink-600 h-2 rounded-full" style="width: 35%;"></div>
+            </div>
+            <div class="flex justify-between w-3/4 text-sm text-lavender font-semibold">
+                <span>0:35</span>
+                <span>3:45</span>
+            </div>
+    
+            <!-- Volume Control -->
+            <div class="flex items-center w-3/4 justify-end mt-4">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-lavender fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5L6 9H3v6h3l5 4V5z" />
+                </svg>
+                <input type="range" class="w-32 accent-pink-600" min="0" max="100" value="50">
+            </div>
+        </div>
+    </body>
+</html>

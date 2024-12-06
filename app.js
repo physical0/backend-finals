@@ -18,6 +18,21 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider) {
       templateUrl: 'templates/library.html',
       controller: 'LibraryController'
     })
+    .when('/artist', {
+        templateUrl: 'templates/artist.html',
+    })
+    .when('/playlist', {
+        templateUrl: 'templates/playlist.html',
+    })
+    .when('/login', {
+        templateUrl: 'templates/login.html',
+    })
+    .when('/register', {
+        templateUrl: 'templates/register.html',
+    })
+    .when('/settings', {
+        templateUrl: 'templates/settings.html',
+    })
     .otherwise({
       redirectTo: '/'
     });

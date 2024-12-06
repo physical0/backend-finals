@@ -5,6 +5,7 @@
     <title>Music Player</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.8.3/angular.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-route/1.8.3/angular-route.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="tailwind.config.js"></script>
     <script src="./app.js"></script>
@@ -14,7 +15,7 @@
 <body class="bg-coolBlack" ng-controller="NavigationController">
     <div>
     <nav
-        class="fixed top-0 left-0 right-0 z-50 gray-900 border-b border-white-700 flex items-center justify-between px-4 py-3 ring ring-white">
+        class="fixed top-0 left-0 right-0 z-50 gray-900 flex items-center justify-between px-4 py-3">
         <div class="flex items-center space-x-4">
     <!------------- Profile Avatar ------------->
     <div class="w-10 h-10 rounded-full flex items-center justify-center text-white font-bold">
@@ -24,7 +25,7 @@
     </nav>
 
     <!------------- Sidebar ------------->
-    <div class="fixed w-64 h-full bg-pink-700 p-6 sidebar-custom mt-16">
+    <div class="fixed w-64 h-full bg-pink-700 p-6 sidebar-custom">
         <div class="bg-darkMagenta grid place-items-center h-10 mb-4 rounded-md">
             <h1 class="text-2xl text-white font-bold mb-8 mt-1 object-center">Musica</h1>
         </div>

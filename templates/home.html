@@ -1,8 +1,57 @@
+<!------------- Sidebar ------------->
+<div class="fixed w-64 h-full bg-pink-700 p-6 sidebar-custom">
+    <div class="bg-white grid place-items-center h-10 mb-4 rounded-md">
+        <h1 class="text-2xl text-fuschia font-bold mb-8 mt-1 object-center">Music Player</h1>
+    </div>
+    <!------------- Navigation ------------->
+    <nav class="space-y-4">
+        <a href="#" class="block text-fuschia hover:text-white">Home</a>
+        <a href="#" class="block text-fuschia hover:text-white">Search</a>
+    </nav>
+
+    <!------------- Playlists ------------->
+    <div class="mt-8">
+        <h2 class="text-fuschia uppercase text-sm font-bold mb-4">Playlists</h2>
+        <ul class="space-y-2">
+            <li>
+                <a href="/frontend-finals/templates/playlist.html" class="block text-fuschia hover:text-white">Love Live</a>
+            </li>
+        </ul>
+    </div>
+
+    <!------------- Profile & Settings Button ------------->
+    <div class = "mt-40">
+        <a href = "templates/profile.html" class = "flex items-center space-x-4 text-fuschia hover:text-white py-2 px-4 rounded-md transition duration-200">
+            <i class = "fas fa-user"> </i>
+            <span> Profile </span>
+        </a>
+
+        <a href = "templates/settings.html" class = "flex items-center space-x-4 text-fuschia hover:text-white py-2 px-4 rounded-md transition duration-200">
+            <i class = "fas fa-cog"> </i>
+            <span> Settings </span>
+        </a>
+    </div>
+
+    <!------------- Login & Register Button ------------->
+    <nav class = "mt-36 text-center">
+        <h4 class = "mb-4 text-fuschia font-semibold text-lg"> Already Have an Account? </h4>
+        <div class = "flex justify-center space-x-4">
+            <a href = "templates/login.html" class = "block w-24 text-center py-2 rounded-md bg-fuschia text-coolBlack font-semibold hover:bg-lavender hover:text-white transition duration-200">
+                <i class="fas fa-sign-in-alt mr-2"> </i> Login
+            </a>
+
+            <a href = "templates/register.html" class = "block w-24 text-center py-2 rounded-md bg-fuschia text-coolBlack font-semibold hover:bg-lavender hover:text-white transition duration-200">
+                <i class = "fas fa-user-plus mr-1"> </i> Register
+            </a>
+        </div>
+    </nav>
+</div>
+
 <!------------- Main Content ------------->
 <div class="ml-64 p-8">
 
     <!------------- Search Bar ------------->
-    <div class="mb-8 mt-16">
+    <div class="mb-8">
         <input type="text" ng-model="searchQuery" ng-click="goToSearch()" placeholder="Search for music albums..."
             class="w-full bg-pink-700 rounded-full px-6 py-3 text-white placeholder-white">
     </div>
@@ -46,6 +95,5 @@
                 </div>
             </div>
         </div>
-
     </div>
 </div>
