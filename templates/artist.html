@@ -1,132 +1,75 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Music Player | Artist</title>
-        <link rel="stylesheet" href="../styles/backgroundImage.css">
-        <script src="https://cdn.tailwindcss.com"></script>
-        <script src="../tailwind.config.js"></script>
-    </head>
-    <body class="bg-coolBlack flex flex-col min-h-screen">
-        <!-- Header -->
-        <div class="bg-black text-lavender flex flex-row py-5 w-full sticky-header">
-            <div class="uppercase text-lg basis-1/4 pl-5">
-                <a href="../index.html">
-                    <span class="font-extrabold hover:text-white transition duration-200">Musica</span>
-                </a>
+<div class="ml-64 p-8">
+    <div ng-if="loading" class="text-center py-8">
+        <div class="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500 mx-auto"></div>
+    </div>
+
+    <div ng-if="error" class="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
+        {{error}}
+    </div>
+
+    <div ng-if="artist" class="p-6 m-[100px]">
+        <div class="bg-white shadow-lg rounded-lg overflow-hidden">
+            <div class="flex flex-col md:flex-row">
+                <!---- Artist Image ---->
+                <div class="md:w-1/3 p-6 flex justify-center items-center">
+                    <img ng-if="artist.images && artist.images.length > 0" 
+                         ng-src="{{artist.images[0].uri}}" 
+                         alt="{{artist.name}}'s image" 
+                         class="w-64 h-64 rounded-full object-cover shadow-md">
+                    <div ng-if="!artist.images || artist.images.length === 0" 
+                         class="w-64 h-64 bg-gray-200 rounded-full flex items-center justify-center text-gray-500">
+                        No Image Available
+                    </div>
+                </div>
+
+                <!---- Artist Bio Box ---->
+                <div class="md:w-2/3 p-6 bg-gray-50">
+                    <div class="border-b-2 border-blue-500 pb-2 mb-4">
+                        <h2 class="text-3xl font-bold text-gray-800">{{artist.name}}</h2>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <h3 class="font-semibold text-gray-600">Artist Details</h3>
+                            <ul class="text-gray-700 space-y-2">
+                                <li ng-if="artist.realname">
+                                    <strong>Real Name:</strong> {{artist.realname}}
+                                </li>
+                                <li ng-if="artist.profile">
+                                    <strong>Active Since:</strong> 
+                                    <span ng-if="artist.profile.indexOf('active since') !== -1">
+                                        {{(artist.profile.match(/active since\s*(\d{4})/i) || [])[1] || 'Unknown'}}
+                                    </span>
+                                </li>
+                            </ul>
+                        </div>
+
+                        <div>
+                            <h3 class="font-semibold text-gray-600">Additional Information</h3>
+                            <ul class="text-gray-700 space-y-2">
+                                <li ng-if="artist.namevariations && artist.namevariations.length">
+                                    <strong>Name Variations:</strong> 
+                                    {{artist.namevariations.slice(0, 3).join(', ')}}
+                                    <span ng-if="artist.namevariations.length > 3">
+                                        (+{{artist.namevariations.length - 3}} more)
+                                    </span>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="mt-4">
+                        <h3 class="font-semibold text-gray-600 mb-2">Artist Biography</h3>
+                        <p ng-if="artist.profile" class="text-gray-700 leading-relaxed">
+                            {{artist.profile | limitTo: 500}}
+                            <span ng-if="artist.profile.length > 500">...</span>
+                        </p>
+                        <p ng-if="!artist.profile" class="text-gray-500 italic">
+                            No detailed biography available for this artist.
+                        </p>
+                    </div>
+                </div>
             </div>
-            <div class="flex-auto flex justify-end items-center pr-5">
-                <span>Now playing</span>
-                <a href="">
-                    <span class="font-extrabold ml-2 hover:text-white transition duration-200">A song for You! You? You!!</span>
-                </a>
-            </div>
-        </div>
-
-        <!-- Main Section -->
-        <div class="text-white flex flex-col flex-grow items-center container mx-auto">
-            <!-- Background -->
-            <div class="main-background"></div>
-
-            <!-- Artist Information -->
-            <div class="flex items-center flex-col mt-10">
-                <img src="/frontend-finals/public/img/artist.jpg" alt="Artist Image" class="rounded-full w-40 h-40 border-4 border-pink-600 mb-5">
-                <h1 class="text-4xl font-extrabold">µ's</h1>
-                <p class="text-gray-300 text-center mt-2">Popular Japanese idol group known for their hits like "Snow Halation" and anime "Love Live: School Idol Project"</p>
-            </div>
-
-            <!-- Songs List -->
-            <div class="mt-5 w-3/4">
-                <h2 class="text-2xl font-bold mb-5">Top Songs</h2>
-                <ul class="space-y-4">
-                    <li class="bg-gray-800 rounded-xl p-4 flex justify-between items-center hover:bg-gray-700 transition duration:200">
-                        <span class="text-lg">A song for You! You? You!!</span>
-                        <button class="bg-pink-400 text-white p-3 rounded-full hover:bg-lavender transition duration-200">
-                            <!-- Play Button -->
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 21 24" stroke="currentColor">
-                                <path stroke-width="2" d="M14.752 11.168l-6.704-3.736a1 1 0 00-1.496.868v7.472a1 1 0 001.496.868l6.704-3.736a1 1 0 000-1.736z" />
-                            </svg>
-                        </button>
-                    </li>
-                    <li class="bg-gray-800 rounded-xl p-4 flex justify-between items-center hover:bg-gray-700 transition duration:200">
-                        <span class="text-lg">Snow Halation</span>
-                        <button class="bg-pink-400 text-white p-3 rounded-full hover:bg-lavender transition duration-200">
-                            <!-- Play Button -->
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 21 24" stroke="currentColor">
-                                <path stroke-width="2" d="M14.752 11.168l-6.704-3.736a1 1 0 00-1.496.868v7.472a1 1 0 001.496.868l6.704-3.736a1 1 0 000-1.736z" />
-                            </svg>
-                        </button>
-                    </li>
-                    <li class="bg-gray-800 rounded-xl p-4 flex justify-between items-center hover:bg-gray-700 transition duration:200">
-                        <span class="text-lg">START:DASH!!</span>
-                        <button class="bg-pink-400 text-white p-3 rounded-full hover:bg-lavender transition duration-200">
-                            <!-- Play Button -->
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 21 24" stroke="currentColor">
-                                <path stroke-width="2" d="M14.752 11.168l-6.704-3.736a1 1 0 00-1.496.868v7.472a1 1 0 001.496.868l6.704-3.736a1 1 0 000-1.736z" />
-                            </svg>
-                        </button>
-                    </li>
-                </ul>
-            </div>
-        </div>
-
-        <!-- Control Section -->
-    <div class="bg-black text-lavender flex items-center justify-between py-4 space-x-6 sticky-control">
-        <!-- Image on the Left -->
-        <div class="flex-none pl-5">
-            <img src="/frontend-finals/public/img/currentSong.jpg" alt="Album Art" class="rounded-xl w-16 h-16">
-        </div>
-
-        <!-- Song Name and Artist on the Right -->
-        <div class="flex flex-col justify-center ml-2 text-white">
-            <a href="/frontend-finals/templates/currentSong.html">
-                <span class="text-white font-semibold hover:text-gray-300 transition duration-200">A song for You! You? You!!</span>
-            </a>
-            <a href="/frontend-finals/templates/artist.html">
-                <span class="text-white hover:text-gray-300 transition duration-200">µ's</span>
-            </a>
-        </div>
-
-        <!-- Playback Controls in the Center -->
-        <div class="flex flex-col items-center flex-grow">
-            <!-- Playback Buttons -->
-            <div class="flex justify-center items-center space-x-6 mb-4">
-                <button class="bg-pink-400 text-white p-3 rounded-full hover:bg-lavender transition duration-200">
-                    <!-- Backward Button -->
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
-                    </svg>
-                </button>
-                <button class="bg-lavender text-white p-5 rounded-full hover:bg-pink-400 transition duration-200">
-                    <!-- Play/Pause Button -->
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" fill="none" viewBox="0 0 21 24" stroke="currentColor">
-                        <path stroke-width="2" d="M14.752 11.168l-6.704-3.736a1 1 0 00-1.496.868v7.472a1 1 0 001.496.868l6.704-3.736a1 1 0 000-1.736z" />
-                    </svg>
-                </button>
-                <button class="bg-pink-400 text-white p-3 rounded-full hover:bg-lavender transition duration-200">
-                    <!-- Forward Button -->
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                    </svg>
-                </button>
-            </div>
-
-            <!-- Progress Bar -->
-            <div class="w-4/6 bg-gray-300 h-1 rounded-full relative mb-4">
-                <div class="bg-pink-600 h-1 rounded-full" style="width: 35%;"></div>
-            </div>
-            <div class="flex justify-between w-4/6 text-sm text-lavender font-semibold">
-                <span>0:35</span>
-                <span>3:45</span>
-            </div>
-        </div>
-
-        <!-- Volume Control on the Right -->
-        <div class="flex-none mr-5">
-            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-lavender" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5L6 9H3v6h3l5 4V5z" />
-            </svg>
-            <input type="range" class="w-32 accent-pink-600" min="0" max="100" value="50">
         </div>
     </div>
-    </body>
-</html>
+</div>

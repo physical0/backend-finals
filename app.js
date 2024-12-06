@@ -18,6 +18,10 @@ app.config(['$routeProvider', '$locationProvider', function ($routeProvider) {
       templateUrl: 'templates/library.html',
       controller: 'LibraryController'
     })
+    .when('/artist/:id', {
+      templateUrl: 'templates/artist.html',
+      controller: 'ArtistController'
+    })
     .when('/artist', {
         templateUrl: 'templates/artist.html',
     })
@@ -293,4 +297,30 @@ app.controller('LibraryController', ['$scope', '$http', 'LibraryService', functi
       console.error('Error fetching library:', error);
       $scope.error = 'Failed to load library';
     });
+}]);
+
+
+app.controller('ArtistController', ['$scope', '$http', '$routeParams', function($scope, $http, $routeParams) {
+  $scope.artistId = $routeParams.id;
+  $scope.artist = null;
+  $scope.loading = true;
+  $scope.error = null;
+
+  const DISCOGS_API_KEY = 'btRisFfTfjEfmJVdBeIx';
+  const DISCOGS_API_SECRET = 'xmBiFGMXZWbPFwPuGAoAhgjrjzdxusQn';
+
+  $http({
+    method: 'GET',
+    url: `https://api.discogs.com/artists/${$scope.artistId}`,
+    params: {
+      key: DISCOGS_API_KEY,
+      secret: DISCOGS_API_SECRET
+    }
+  }).then(function(response) {
+    $scope.artist = response.data;
+    $scope.loading = false;
+  }).catch(function(error) {
+    $scope.error = 'Failed to fetch artist details. Please try again.';
+    $scope.loading = false;
+  });
 }]);

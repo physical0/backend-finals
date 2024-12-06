@@ -81,7 +81,10 @@
                     <img ng-src="{{selectedAlbum.images[0].uri || 'placeholder.jpg'}}" alt="{{selectedAlbum.title}}"
                         class="w-full rounded-lg shadow-md">
                     <div>
-                        <p class="text-gray-600 mb-2"><strong>Artist:</strong> {{selectedAlbum.artists[0].name}}</p>
+                        <p class="text-gray-600 mb-2"><strong>Artist:</strong>
+                            <a ng-if="selectedAlbum.artists[0].id" ng-href="#!/artist/{{selectedAlbum.artists[0].id}}">{{selectedAlbum.artists[0].name}}</a>
+                            <span ng-if="!selectedAlbum.artists[0].id">{{selectedAlbum.artists[0].name}}</span>
+                          </p>                     
                         <p class="text-gray-600 mb-2"><strong>Year:</strong> {{selectedAlbum.year}}</p>
                         <p class="text-gray-600 mb-2"><strong>Label:</strong> {{selectedAlbum.labels[0].name}}</p>
                         <p class="text-gray-600 mb-2"><strong>Format:</strong> {{selectedAlbum.formats[0].name}}</p>
