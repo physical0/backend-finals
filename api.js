@@ -2,7 +2,7 @@ const express = require("express");
 const cors = require("cors");
 const dotenv = require("dotenv");
 const mongoose = require("mongoose");
-
+const User = require('./models/User');
 
 const Album = require("./models/album");
 
@@ -44,4 +44,20 @@ app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
 
+app.post("/api/register", async (req, res) => {
+  const { username, email, password, confirmPassword } = req.body;
 
+  if (password !== confirmPassword) {
+    return res.status(400).json({ message: "Passwords don't match" });
+  }
+
+  const userExists = await User.findOne({ email });
+  if (userExists) {
+    return res.status(400).json({ message: "Email already in use" });
+  }
+
+  const newUser = new User({ username, email, password });
+  await newUser.save();
+  
+  res.status(201).json({ message: 'User registered successfully' });
+});
